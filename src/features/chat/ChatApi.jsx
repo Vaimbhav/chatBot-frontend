@@ -45,13 +45,13 @@
 
 
 
-const API_URL = import.meta.env.VITE_API_URL;
+// const API_URL = import.meta.env.VITE_API_URL;
 
 export function sendChatMessage(data) {
     return new Promise((resolve, reject) => {
         (async () => {
             try {
-                const response = await fetch(`${API_URL}/api/v1/chat/`, {
+                const response = await fetch(`https://chatbot-backend-krm9.onrender.com/api/v1/chat/`, {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
@@ -72,7 +72,7 @@ export function fetchChatHistory() {
     return new Promise((resolve, reject) => {
         (async () => {
             try {
-                const response = await fetch(`${API_URL}/api/v1/chat/history`, {
+                const response = await fetch(`https://chatbot-backend-krm9.onrender.com/api/v1/chat/history`, {
                     method: 'GET',
                     credentials: 'include',
                 });

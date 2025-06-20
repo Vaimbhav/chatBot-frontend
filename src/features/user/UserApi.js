@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL;
+// const API_URL = import.meta.env.VITE_API_URL;
 
 // export function fetchLoggedInUserOrders() {
 // 	return new Promise(async (resolve) => {
@@ -43,9 +43,12 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export function fetchLoggedInUserOrders() {
 	return new Promise(async (resolve) => {
-		const response = await fetch(`${API_URL}/api/v1/orders/own/`, {
-			credentials: 'include',
-		});
+		const response = await fetch(
+			`https://chatbot-backend-krm9.onrender.com/api/v1/orders/own/`,
+			{
+				credentials: 'include',
+			}
+		);
 		const data = await response.json();
 		resolve({data});
 	});
@@ -54,9 +57,12 @@ export function fetchLoggedInUserOrders() {
 export function fetchLoggedInUser() {
 	return new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`${API_URL}/api/v1/users/own`, {
-				credentials: 'include',
-			});
+			const response = await fetch(
+				`https://chatbot-backend-krm9.onrender.com/api/v1/users/own`,
+				{
+					credentials: 'include',
+				}
+			);
 			if (!response.ok) {
 				const error = await response.json();
 				reject(error);
@@ -72,12 +78,16 @@ export function fetchLoggedInUser() {
 
 export function updateUser(update) {
 	return new Promise(async (resolve) => {
-		const response = await fetch(`${API_URL}/api/v1/users/` + update.id, {
-			method: 'PATCH',
-			body: JSON.stringify(update),
-			headers: {'content-type': 'application/json'},
-			credentials: 'include',
-		});
+		const response = await fetch(
+			`https://chatbot-backend-krm9.onrender.com/api/v1/users/` +
+				update.id,
+			{
+				method: 'PATCH',
+				body: JSON.stringify(update),
+				headers: {'content-type': 'application/json'},
+				credentials: 'include',
+			}
+		);
 		const data = await response.json();
 		resolve({data});
 	});

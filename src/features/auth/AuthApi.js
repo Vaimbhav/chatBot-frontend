@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL;
+// const API_URL = import.meta.env.VITE_API_URL;
 
 // export function createUser(userData) {
 // 	return new Promise(async (resolve, reject) => {
@@ -133,12 +133,15 @@ const API_URL = import.meta.env.VITE_API_URL;
 export function createUser(userData) {
 	return new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`${API_URL}/api/v1/users/signup`, {
-				method: 'POST',
-				body: JSON.stringify(userData),
-				headers: {'content-type': 'application/json'},
-				credentials: 'include',
-			});
+			const response = await fetch(
+				`https://chatbot-backend-krm9.onrender.com/api/v1/users/signup`,
+				{
+					method: 'POST',
+					body: JSON.stringify(userData),
+					headers: {'content-type': 'application/json'},
+					credentials: 'include',
+				}
+			);
 			const data = await response.json();
 			resolve({data});
 		} catch (error) {
@@ -150,12 +153,15 @@ export function createUser(userData) {
 export function loginUser(loginInfo) {
 	return new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`${API_URL}/api/v1/users/login`, {
-				method: 'POST',
-				body: JSON.stringify(loginInfo),
-				headers: {'content-type': 'application/json'},
-				credentials: 'include',
-			});
+			const response = await fetch(
+				`https://chatbot-backend-krm9.onrender.com/api/v1/users/login`,
+				{
+					method: 'POST',
+					body: JSON.stringify(loginInfo),
+					headers: {'content-type': 'application/json'},
+					credentials: 'include',
+				}
+			);
 			if (response.ok) {
 				const data = await response.json();
 				resolve({data});
@@ -172,10 +178,13 @@ export function loginUser(loginInfo) {
 export function checkAuth() {
 	return new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`${API_URL}/api/v1/users/check`, {
-				method: 'GET',
-				credentials: 'include',
-			});
+			const response = await fetch(
+				`https://chatbot-backend-krm9.onrender.com/api/v1/users/check`,
+				{
+					method: 'GET',
+					credentials: 'include',
+				}
+			);
 			if (response.ok) {
 				const data = await response.json();
 				resolve({data});
@@ -192,9 +201,12 @@ export function checkAuth() {
 export function signOut() {
 	return new Promise(async (resolve, reject) => {
 		try {
-			const response = await fetch(`${API_URL}/api/v1/users/logout`, {
-				credentials: 'include',
-			});
+			const response = await fetch(
+				`https://chatbot-backend-krm9.onrender.com/api/v1/users/logout`,
+				{
+					credentials: 'include',
+				}
+			);
 			if (response.ok) {
 				resolve({data: 'success'});
 			} else {
@@ -211,7 +223,7 @@ export function resetPasswordRequest(email) {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const response = await fetch(
-				`${API_URL}/api/v1/users/reset-password-request`,
+				`https://chatbot-backend-krm9.onrender.com/api/v1/users/reset-password-request`,
 				{
 					method: 'POST',
 					body: JSON.stringify({email}),
@@ -236,7 +248,7 @@ export function resetPassword(data) {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const response = await fetch(
-				`${API_URL}/api/v1/users/reset-password`,
+				`https://chatbot-backend-krm9.onrender.com/api/v1/users/reset-password`,
 				{
 					method: 'POST',
 					body: JSON.stringify(data),
