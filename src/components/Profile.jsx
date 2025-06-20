@@ -90,7 +90,7 @@ const Profile = () => {
                     {
                         userInfo.addresses &&
                         userInfo.addresses.map((address, index) => (
-                            <div className='mb-3'>
+                            <div className='mb-3' key={index}>
                                 {
                                     selectedEditIndex === index ? (
                                         <form
