@@ -7,7 +7,11 @@ import { fetchChatHistoryAsync, sendChatMessageAsync } from './ChatThunk';
 const chatSlice = createSlice({
     name: 'chat',
     initialState: chatInitialState,
-    reducers: {},
+    reducers: {
+        clearMessage: (state) => {
+            state.message = null;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchChatHistoryAsync.pending, (state) => {
@@ -41,5 +45,7 @@ const chatSlice = createSlice({
             });
     },
 });
+
+export const { clearMessage } = chatSlice.actions;
 
 export default chatSlice.reducer;
